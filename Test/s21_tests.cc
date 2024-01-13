@@ -9,8 +9,7 @@ class ModelTest : public ::testing::Test {
   static void SetUpTestCase() { my_model = Model::GetInstance(); }
   void SetUp() override {
     my_model->Clear();
-    my_model->SetData(
-        "/Users/pickling/0projects/с++/CPP4_3DViewer_v2.0-1/src/Test/cube.txt");
+    my_model->SetData("Test/cube.txt");
   }
 
   static void TearDownTestCase() {
@@ -99,15 +98,6 @@ TEST_F(ModelTest, TestScale) {
     ASSERT_NEAR(points[i].GetY(), answer[i][1], 1e-7);
     ASSERT_NEAR(points[i].GetZ(), answer[i][2], 1e-7);
   }
-}
-
-TEST_F(ModelTest, Ring) {
-  my_model->SetData("/Users/pickling/Downloads/3D/ring.obj");
-  my_model->Clear();
-}
-TEST_F(ModelTest, Road) {
-  my_model->SetData("/Users/pickling/Downloads/3D/RailwayTrack.obj");
-  my_model->Clear();
 }
 
 TEST_F(ModelTest, Exception) {
