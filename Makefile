@@ -5,7 +5,7 @@ TEST_FLAGS=--coverage
 TEST=Test/s21_tests
 TARGET=3DViewer
 
-README := README.html
+README := README.md
 
 SRC := $(shell find . -name '*.cc' )
 SRCH := $(shell find . -name '*.h' )
