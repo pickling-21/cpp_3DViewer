@@ -80,7 +80,35 @@ class View : public QMainWindow {
 
   void on_pushButton_film_clicked();
 
- private:
+  void on_pushButton_x_move_right_clicked();
+
+  void on_pushButton_x_move_left_clicked();
+
+  void on_pushButton_y_move_right_clicked();
+
+  void on_pushButton_y_move_left_clicked();
+
+  void on_pushButton_z_move_right_clicked();
+
+  void on_pushButton_z_move_left_clicked();
+
+  void on_pushButton_xRot_left_clicked();
+
+  void on_pushButton_yRot_left_clicked();
+
+  void on_pushButton_zRot_left_clicked();
+
+  void on_pushButton_xRot_right_clicked();
+
+  void on_pushButton_yRot_right_clicked();
+
+  void on_pushButton_zRot_right_clicked();
+
+  void on_lineEdit_dot_size_returnPressed();
+
+  void on_lineEdit_thickness_edge_returnPressed();
+
+private:
   Ui::View *ui;
   s21::Controller *c_;
 

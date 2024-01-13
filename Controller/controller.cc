@@ -11,10 +11,7 @@ QString Controller::ParseFile(const QString &filename) {
   QString result = "";
   try {
     model_->SetData(filename.toStdString());
-
   } catch (Error &err) {
-    std::cerr << "PARSE3\n";
-
     result = QString::fromUtf8(std::string(err.what()).c_str());
   }
   return result;

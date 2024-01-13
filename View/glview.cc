@@ -28,7 +28,7 @@ void glView::paintGL() {
 }
 
 void glView::initializeGL() {
-  glEnable(GL_DEPTH_TEST);  // Включаем тест глубины для отрисовки в 3D
+  glEnable(GL_DEPTH_TEST);
 }
 
 void glView::DrawObj() {
@@ -40,17 +40,11 @@ void glView::DrawObj() {
   }
 
   for (int i = 0; i < c_->GetCountSurfaces(); ++i) {
-    //      std::cout << i << " ";
-
     for (int j = 0; j < c_->GetVertexInSurface(i); ++j) {
       glBegin(GL_LINE_LOOP);
       SetColor(edge_color_);
       glVertex3d(c_->GetX(i, j), c_->GetY(i, j), c_->GetZ(i, j));
-      //      std::cout << j << " /";
-      //      std::cout << c_->GetX(i, j) << " "<<  c_->GetY(i, j) << " "<<
-      //      c_->GetZ(i, j) << "|";
     }
-    //    std::cout << std::endl;
     glEnd();
   }
   if (dotted_edge_) glDisable(GL_LINE_STIPPLE);

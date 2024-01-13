@@ -138,6 +138,7 @@ void View::LoadSettings() {
 
   settings.beginGroup("Vertex");
   char type = settings.value("type").toInt();
+  float v_size = settings.value("size").toFloat();
   if (type == 'n') {
     ui->radioButton_no_point->setChecked(true);
   } else if (type == 's') {
@@ -145,9 +146,9 @@ void View::LoadSettings() {
   } else if (type == 'c') {
     ui->radioButton_cube->setChecked(true);
   }
-
+  ui->lineEdit_dot_size->setText(QString::number(v_size));
   ui->widget->SetVertex(settings.value("color").toString(),
-                        settings.value("size").toFloat(), type);
+                        v_size, type);
 
   settings.endGroup();
 
@@ -155,14 +156,16 @@ void View::LoadSettings() {
 
   settings.beginGroup("Edge");
   bool dotted = settings.value("dotted").toBool();
+  float e_size = settings.value("size").toFloat();
+
   if (dotted) {
     ui->radioButton_dotted_edge->setChecked(true);
   } else {
     ui->radioButton_solid_edge->setChecked(true);
   }
-
+  ui->lineEdit_thickness_edge->setText(QString::number(e_size));
   ui->widget->SetEdge(dotted, settings.value("color").toString(),
-                      settings.value("size").toFloat());
+                      e_size);
 
   settings.endGroup();
 
@@ -388,3 +391,102 @@ void View::on_pushButton_film_clicked() {
                          tr("Выберите файл для сохранения"));
   }
 }
+
+
+
+void View::on_pushButton_x_move_right_clicked()
+{
+    double number = ui->lineEdit_x_move->text().toDouble();
+    ui->lineEdit_x_move->setText(QString::number(number + (kStepMove)));
+}
+
+
+void View::on_pushButton_x_move_left_clicked()
+{
+    double number = ui->lineEdit_x_move->text().toDouble();
+    ui->lineEdit_x_move->setText(QString::number(number - (kStepMove)));
+}
+
+
+void View::on_pushButton_y_move_right_clicked()
+{
+    double number = ui->lineEdit_y_move->text().toDouble();
+    ui->lineEdit_y_move->setText(QString::number(number + (kStepMove)));
+}
+
+
+void View::on_pushButton_y_move_left_clicked()
+{
+    double number = ui->lineEdit_y_move->text().toDouble();
+    ui->lineEdit_y_move->setText(QString::number(number - (kStepMove)));
+}
+
+
+void View::on_pushButton_z_move_right_clicked()
+{
+    double number = ui->lineEdit_z_move->text().toDouble();
+    ui->lineEdit_z_move->setText(QString::number(number + (kStepMove)));
+}
+
+
+void View::on_pushButton_z_move_left_clicked()
+{
+    double number = ui->lineEdit_z_move->text().toDouble();
+    ui->lineEdit_z_move->setText(QString::number(number - (kStepMove)));
+}
+
+
+
+void View::on_pushButton_xRot_left_clicked()
+{
+    double number = ui->lineEdit_xRot->text().toDouble();
+      ui->lineEdit_xRot->setText(QString::number(number - (kStepRot)));
+}
+
+
+void View::on_pushButton_yRot_left_clicked()
+{
+    double number = ui->lineEdit_yRot->text().toDouble();
+    ui->lineEdit_yRot->setText(QString::number(number - (kStepRot)));
+}
+
+
+void View::on_pushButton_zRot_left_clicked()
+{
+    double number = ui->lineEdit_zRot->text().toDouble();
+    ui->lineEdit_zRot->setText(QString::number(number - (kStepRot)));
+}
+
+
+void View::on_pushButton_xRot_right_clicked()
+{
+    double number = ui->lineEdit_xRot->text().toDouble();
+    ui->lineEdit_xRot->setText(QString::number(number + (kStepRot)));
+}
+
+
+void View::on_pushButton_yRot_right_clicked()
+{
+    double number = ui->lineEdit_yRot->text().toDouble();
+    ui->lineEdit_yRot->setText(QString::number(number + (kStepRot)));
+}
+
+
+void View::on_pushButton_zRot_right_clicked()
+{
+    double number = ui->lineEdit_zRot->text().toDouble();
+    ui->lineEdit_zRot->setText(QString::number(number + (kStepRot)));
+}
+
+
+void View::on_lineEdit_dot_size_returnPressed()
+{
+    on_lineEdit_dot_size_editingFinished();
+}
+
+
+void View::on_lineEdit_thickness_edge_returnPressed()
+{
+    on_lineEdit_thickness_edge_editingFinished();
+}
+
