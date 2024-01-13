@@ -86,7 +86,7 @@ valgrind: $(OBJS)
 	@CK_FORK=no valgrind --trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all --verbose --log-file=RESULT.log  ./$(TEST_OBJ)  >/dev/null;
 	cat RESULT.log
 
-leaks: test
+leaks: tests
 	CK_FORK=no leaks -atExit -- ./s21_test
 
 a: clean $(TARGET).a
